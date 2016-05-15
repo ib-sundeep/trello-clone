@@ -1,6 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+
+import Route from 'react-router/lib/Route';
+import Router from 'react-router/lib/Router';
+import IndexRoute from 'react-router/lib/IndexRoute';
+import browserHistory from 'react-router/lib/browserHistory';
 
 import App from './components/App/App';
 import NotFound from './components/App/NotFound';
