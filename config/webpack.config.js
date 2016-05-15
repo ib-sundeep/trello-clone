@@ -49,7 +49,7 @@ module.exports = function makeWebpackConfig() {
       {
         test: /\.jsx?$/,
         include: root('client'),
-        loader: 'babel-loader'
+        loaders: ['babel-loader']
       },
 
       // SCSS files

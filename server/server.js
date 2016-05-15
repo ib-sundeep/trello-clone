@@ -27,9 +27,9 @@ app.use(bodyParser.json());
 // API routes
 require('./routes')(app);
 
-const compiler = webpack(webpackConfig);
-
 if (isDev) {
+  const compiler = webpack(webpackConfig);
+
   app.use(historyApiFallback({
     verbose: false
   }));

@@ -13,12 +13,12 @@ require('./styles/styles.scss');
 
 render((
   <Router history={browserHistory}>
-    <Route path='/' component={App}>
+    <Route path="/" component={App}>
       <IndexRoute component={Home} />
 
-      <Route path='helloworld' component={HelloWorld} />
+      <Route path="helloworld" component={HelloWorld} />
 
-      <Route path='*' component={NotFound} />
+      <Route path="*" component={NotFound} />
     </Route>
   </Router>
 ), document.getElementById('app'));

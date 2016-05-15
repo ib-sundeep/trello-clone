@@ -1,19 +1,22 @@
 import React from 'react';
-import { IndexLink, Link } from 'react-router';
 
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 class App extends React.Component {
-  constructor (props) {
+  static propTypes = {
+    children: React.PropTypes.node
+  };
+
+  constructor(props) {
     super(props);
 
     this.state = {
-      counter: 0
+      counter: 0,
     };
   }
 
-  render () {
+  render() {
     return (
       <div>
         <Header />
