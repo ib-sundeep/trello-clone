@@ -49,7 +49,7 @@ module.exports = function makeWebpackConfig() {
       {
         test: /\.jsx?$/,
         include: root('client'),
-        loaders: ['babel-loader']
+        loader: 'babel-loader'
       },
 
       // SCSS files
@@ -87,6 +87,9 @@ module.exports = function makeWebpackConfig() {
         compressor: {
           warnings: false,
           screw_ie8: true
+        },
+        output: {
+          comments: false
         }
       }),
       new CopyWebpackPlugin([{
