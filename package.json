@@ -11,7 +11,7 @@
   "private": true,
   "scripts": {
     "start": "node server",
-    "start:prod": "NODE_ENV=production webpack --config ./config/webpack.config.js --progress --profile --colors && node server"
+    "start:prod": "NODE_ENV=production webpack --config ./webpack.config.js --progress --profile --colors && node server"
   },
   "dependencies": {
     "react": "^15.0.2",
@@ -42,6 +42,7 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.13.0",
     "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.10.0"
+    "webpack-hot-middleware": "^2.10.0",
+    "webpack-merge": "^0.12.0"
   }
 }
