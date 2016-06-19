@@ -18,7 +18,9 @@ const port  = process.env.PORT || 8080;
 // Configuration
 // ================================================================================================
 
+// Set up Mongoose
 mongoose.connect(config.db);
+mongoose.Promise = global.Promise;
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -53,6 +55,7 @@ if (isDev) {
   app.use(express.static(path.resolve(__dirname, '../client/public')));
   app.get('*', function (req, res) {
     res.sendFile(path.resolve(__dirname, '../client/public/index.html'));
+    res.end();
   });
 }
 
