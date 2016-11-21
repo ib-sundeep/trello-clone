@@ -13,7 +13,7 @@ import Home from './components/Home/Home';
 
 import HelloWorld from './components/HelloWorld/HelloWorld';
 
-require('./styles/styles.scss');
+import './styles/styles.scss';
 
 render((
   <Router history={browserHistory}>

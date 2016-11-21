@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import 'whatwg-fetch';
 
-class Home extends React.Component {
+class Home extends Component {
   constructor(props) {
     super(props);
 
@@ -19,9 +19,8 @@ class Home extends React.Component {
 
   componentDidMount() {
     fetch('/api/counters')
-      .then((response) => {
-        return response.json();
-      }).then((json) => {
+      .then(res => res.json())
+      .then(json => {
         this.setState({
           counters: json
         });
@@ -30,10 +29,9 @@ class Home extends React.Component {
 
   newCounter() {
     fetch('/api/counters', { method: 'POST' })
-      .then((response) => {
-        return response.json();
-      }).then((json) => {
-        var data = this.state.counters;
+      .then(res => res.json())
+      .then(json => {
+        let data = this.state.counters;
         data.push(json);
 
         this.setState({
@@ -46,9 +44,8 @@ class Home extends React.Component {
     const id = this.state.counters[index]._id;
 
     fetch(`/api/counters/${id}/increment`, { method: 'PUT' })
-      .then((response) => {
-        return response.json();
-      }).then((json) => {
+      .then(res => res.json())
+      .then(json => {
         this._modifyCounter(index, json);
       });
   }
@@ -57,9 +54,8 @@ class Home extends React.Component {
     const id = this.state.counters[index]._id;
 
     fetch(`/api/counters/${id}/decrement`, { method: 'PUT' })
-      .then((response) => {
-        return response.json();
-      }).then((json) => {
+      .then(res => res.json())
+      .then(json => {
         this._modifyCounter(index, json);
       });
   }
@@ -68,13 +64,13 @@ class Home extends React.Component {
     const id = this.state.counters[index]._id;
 
     fetch(`/api/counters/${id}`, { method: 'DELETE' })
-      .then((response) => {
+      .then(_ => {
         this._modifyCounter(index, null);
       });
   }
 
   _modifyCounter(index, data) {
-    var prevData = this.state.counters;
+    let prevData = this.state.counters;
 
     if (data) {
       prevData[index] = data;

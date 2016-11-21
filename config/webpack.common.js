@@ -1,9 +1,9 @@
 const webpack = require('webpack');
-const helpers = require('./helpers');
-
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const helpers = require('./helpers');
 
 const NODE_ENV = process.env.NODE_ENV;
 const isProd = NODE_ENV === 'production';
@@ -35,7 +35,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: helpers.root('client'),
-        loader: 'babel-loader'
+        loader: 'babel'
       },
 
       // SCSS files
