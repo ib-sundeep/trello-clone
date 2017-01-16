@@ -14,13 +14,13 @@
     "start:prod": "NODE_ENV=production webpack --config ./webpack.config.js --progress --profile --colors && node server"
   },
   "dependencies": {
-    "react": "^15.4.1",
-    "react-dom": "^15.4.1",
-    "react-router": "^3.0.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-router": "^3.0.1",
     "whatwg-fetch": "^2.0.1"
   },
   "devDependencies": {
-    "autoprefixer": "^6.6.0",
+    "autoprefixer": "^6.6.1",
     "babel-core": "^6.21.0",
     "babel-loader": "^6.2.10",
     "babel-plugin-transform-class-properties": "^6.19.0",
@@ -33,17 +33,17 @@
     "css-loader": "^0.26.1",
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
-    "html-webpack-plugin": "^2.24.1",
-    "mongoose": "^4.7.4",
-    "node-sass": "^4.1.1",
+    "html-webpack-plugin": "^2.26.0",
+    "mongoose": "^4.7.7",
+    "node-sass": "^4.3.0",
     "nodemon": "^1.11.0",
-    "postcss-loader": "^1.2.1",
+    "postcss-loader": "^1.2.2",
     "react-hot-loader": "^3.0.0-beta.6",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
     "webpack": "^1.14.0",
     "webpack-dev-middleware": "^1.9.0",
-    "webpack-hot-middleware": "^2.14.0",
-    "webpack-merge": "^2.0.0"
+    "webpack-hot-middleware": "^2.15.0",
+    "webpack-merge": "^2.4.0"
   }
 }
