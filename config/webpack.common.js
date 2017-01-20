@@ -21,7 +21,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.json', '.css', '.scss', '.html'],
+    extensions: ['.js', '.json', '.css', '.scss', '.html'],
     alias: {
       'app': 'client/app'
     }
@@ -41,14 +41,28 @@ module.exports = {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract({
           fallbackLoader: 'style-loader',
-          loader: 'css-loader?sourceMap!postcss-loader!sass-loader',
-          options: {
-            postcss: [
-              autoprefixer({
-                browsers: ['last 2 version']
-              })
-            ]
-          }
+          loader: [
+            {
+              loader: 'css-loader',
+              options: {
+                'sourceMap': true,
+                'importLoaders': 1
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: () => [
+                  autoprefixer
+                ]
+              }
+            },
+            'sass-loader'
+          ]
+          // TODO: where do I put this...?
+          // autoprefixer({
+          //   browsers: ['last 2 version']
+          // })
         })
       }
     ]
@@ -56,7 +70,7 @@ module.exports = {
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
 
     new webpack.DefinePlugin({
       'process.env': {
