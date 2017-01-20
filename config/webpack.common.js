@@ -21,8 +21,6 @@ module.exports = {
   },
 
   resolve: {
-    cache: true,
-    root: helpers.root(),
     extensions: ['', '.js', '.json', '.css', '.scss', '.html'],
     alias: {
       'app': 'client/app'
@@ -30,24 +28,33 @@ module.exports = {
   },
 
   module: {
-    loaders: [
+    rules: [
       // JS files
       {
         test: /\.jsx?$/,
         include: helpers.root('client'),
-        loader: 'babel'
+        loader: 'babel-loader'
       },
 
       // SCSS files
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass')
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: 'css-loader?sourceMap!postcss-loader!sass-loader',
+          options: {
+            postcss: [
+              autoprefixer({
+                browsers: ['last 2 version']
+              })
+            ]
+          }
+        })
       }
     ]
   },
 
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
 
@@ -62,12 +69,9 @@ module.exports = {
       inject: 'body'
     }),
 
-    new ExtractTextPlugin('css/[name].[hash].css', { disable: !isProd })
-  ],
-
-  postcss: [
-    autoprefixer({
-      browsers: ['last 2 version']
+    new ExtractTextPlugin({
+      filename: 'css/[name].[hash].css',
+      disable: !isProd
     })
   ]
 };
