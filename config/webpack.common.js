@@ -59,10 +59,6 @@ module.exports = {
             },
             'sass-loader'
           ]
-          // TODO: where do I put this...?
-          // autoprefixer({
-          //   browsers: ['last 2 version']
-          // })
         })
       }
     ]
