@@ -11,7 +11,7 @@
   "private": true,
   "scripts": {
     "start": "node server",
-    "start:prod": "NODE_ENV=production webpack --config ./webpack.config.js --progress --profile --colors && node server"
+    "start:prod": "webpack -p --progress --profile --colors && node server"
   },
   "dependencies": {
     "react": "^15.4.2",
