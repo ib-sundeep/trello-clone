@@ -4,7 +4,7 @@ This is a boilerplate project using the following technologies:
 - [React](https://facebook.github.io/react/) and [React Router](https://github.com/reactjs/react-router) for the frontend
 - [Express](http://expressjs.com/) and [Mongoose](http://mongoosejs.com/) for the backend
 - [Sass](http://sass-lang.com/) for styles (using the SCSS syntax)
-- [Webpack](https://webpack.github.io/) for compilation
+- [Webpack 2](https://webpack.github.io/) for compilation
 
 
 ## Requirements
@@ -18,14 +18,14 @@ npm install
 
 ## Running
 
-Development mode:
+Production mode:
 
 ```shell
 npm start
 ```
 
-Production mode:
+Development (Webpack dev server) mode:
 
 ```shell
-npm run start:prod
+npm run start:dev
 ```
