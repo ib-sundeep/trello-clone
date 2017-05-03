@@ -1,11 +1,11 @@
 import React from 'react';
-import IndexLink from 'react-router/lib/IndexLink';
+import { Link } from 'react-router-dom';
 
 const NotFound = () => (
   <div>
     <h2>Page not found</h2>
 
-    <IndexLink to="/">Go home</IndexLink>
+    <Link to="/">Go home</Link>
   </div>
 );
 
