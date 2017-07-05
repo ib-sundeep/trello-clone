@@ -1,10 +1,10 @@
 # MERN-boilerplate
 
 This is a boilerplate project using the following technologies:
-- [React](https://facebook.github.io/react/) and [React Router](https://github.com/reactjs/react-router) for the frontend
+- [React](https://facebook.github.io/react/) and [React Router](https://reacttraining.com/react-router/) for the frontend
 - [Express](http://expressjs.com/) and [Mongoose](http://mongoosejs.com/) for the backend
 - [Sass](http://sass-lang.com/) for styles (using the SCSS syntax)
-- [Webpack 2](https://webpack.github.io/) for compilation
+- [Webpack](https://webpack.github.io/) for compilation
 
 
 ## Requirements
