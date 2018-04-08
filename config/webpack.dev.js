@@ -6,6 +6,8 @@ const commonConfig = require('./webpack.common');
 module.exports = merge(commonConfig, {
   devtool: 'eval-source-map',
 
+  mode: 'development',
+
   entry: {
     'app': [
       'webpack-hot-middleware/client?reload=true'
