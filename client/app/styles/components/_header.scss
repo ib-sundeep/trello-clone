@@ -1,0 +1,25 @@
+$header-background: #363636;
+
+.header {
+  @include flex-row;
+
+  align-items: center;
+  min-height: 75px;
+  background-color: $header-background;
+  color: #ffffff;
+}
+
+.header-title {
+  flex: 1 0 0;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.header-actions {
+  @include flex-row;
+}
+
+.header-action {
+  padding: 10px 5px;
+}

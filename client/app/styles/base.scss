@@ -1,0 +1,18 @@
+body {
+  font-family: "Open Sans";
+}
+
+html,
+body,
+#root,
+.app {
+  height: 100%;
+}
+
+.app {
+  @include flex-col;
+}
+
+.page {
+  flex: 1 0 0;
+}

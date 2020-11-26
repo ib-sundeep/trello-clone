@@ -1,0 +1,39 @@
+$modal-z: 99;
+
+.modal {
+  display: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: $modal-z;
+}
+
+.modal-header {
+  @include flex-row;
+
+  padding: 10px;
+  background-color: #f2f2f2;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.modal-title {
+  flex: 1 0 0;
+  font-weight: bold;
+  color: #000000;
+  margin-right: 10px;
+}
+
+.modal-body {
+  padding: 10px;
+}
+
+.modal-overlay {
+  display: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(1, 1, 1, 0.5);
+  z-index: $modal-z - 1;
+}

@@ -1,30 +1,37 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React from "react";
+import { render } from "react-dom";
+import { Provider } from "react-redux";
 
 import {
   BrowserRouter as Router,
   Route,
-  Link,
-  Switch
-} from 'react-router-dom'
+  Switch,
+  Redirect
+} from "react-router-dom";
 
-import App from './components/App/App';
-import NotFound from './components/App/NotFound';
+import App from "./components/App";
 
-import Home from './components/Home/Home';
+import BoardPage from "./pages/board";
+import HomePage from "./pages/home";
+import store from "./stores";
 
-import HelloWorld from './components/HelloWorld/HelloWorld';
+import "./styles/styles.scss";
 
-import './styles/styles.scss';
+render(
+  <Provider store={store}>
+    <Router>
+      <App>
+        <Switch>
+          <Redirect exact from="/" to="/boards" />
 
-render((
-  <Router>
-    <App>
-      <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/helloworld" component={HelloWorld}/>
-        <Route component={NotFound}/>
-      </Switch>
-    </App>
-  </Router>
-), document.getElementById('app'));
+          <Redirect exact from="/home" to="/boards" />
+
+          <Route exact path="/boards" component={HomePage} />
+
+          <Route exact path="/boards/:slug" component={BoardPage} />
+        </Switch>
+      </App>
+    </Router>
+  </Provider>,
+  document.getElementById("root")
+);

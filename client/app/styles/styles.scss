@@ -1,3 +1,17 @@
 @charset "UTF-8";
 
-@import 'vendor/normalize';
+@import "mixins";
+
+@import "vendor/normalize";
+@import "base";
+
+// Components
+
+@import "components/button";
+@import "components/header";
+@import "components/modal";
+
+// Pages
+
+@import "pages/board";
+@import "pages/home";

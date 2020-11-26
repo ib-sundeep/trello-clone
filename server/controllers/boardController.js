@@ -24,7 +24,6 @@ boardController.create = (req, res, next) => {
             },
             (error, _) => {
               if (error) {
-                console.log({ error });
                 res
                   .status(500)
                   .send({ error: "Something went wrong! Try again later" });
@@ -45,10 +44,13 @@ boardController.create = (req, res, next) => {
 
 boardController.find = (req, res, next) => {
   Board.find().exec((error, boards) => {
-    if (error) throw error;
-    res.json({
-      boards: boards.map(board => board.serialize())
-    });
+    if (error) {
+      res.status(500).send({ error: "Something went wrong! Try again later" });
+    } else {
+      res.json({
+        boards: boards.map(board => board.serialize())
+      });
+    }
   });
 };
 
