@@ -1,51 +1,15 @@
-const Counter = require('../../models/Counter');
+const express = require("express");
+const router = express.Router();
+const counterController = require("../../controllers/counterController");
 
-module.exports = (app) => {
-  app.get('/api/counters', (req, res, next) => {
-    Counter.find()
-      .exec()
-      .then((counter) => res.json(counter))
-      .catch((err) => next(err));
-  });
+router.get("/", counterController.find);
 
-  app.post('/api/counters', function (req, res, next) {
-    const counter = new Counter();
+router.post("/", counterController.create);
 
-    counter.save()
-      .then(() => res.json(counter))
-      .catch((err) => next(err));
-  });
+router.delete("/:id", counterController.delete);
 
-  app.delete('/api/counters/:id', function (req, res, next) {
-    Counter.findOneAndRemove({ _id: req.params.id })
-      .exec()
-      .then((counter) => res.json())
-      .catch((err) => next(err));
-  });
+router.put("/:id/increment", counterController.increment);
 
-  app.put('/api/counters/:id/increment', (req, res, next) => {
-    Counter.findById(req.params.id)
-      .exec()
-      .then((counter) => {
-        counter.count++;
+router.put("/:id/decrement", counterController.decrement);
 
-        counter.save()
-          .then(() => res.json(counter))
-          .catch((err) => next(err));
-      })
-      .catch((err) => next(err));
-  });
-
-  app.put('/api/counters/:id/decrement', (req, res, next) => {
-    Counter.findById(req.params.id)
-      .exec()
-      .then((counter) => {
-        counter.count--;
-
-        counter.save()
-          .then(() => res.json(counter))
-          .catch((err) => next(err));
-      })
-      .catch((err) => next(err));
-  });
-};
+module.exports = router;
