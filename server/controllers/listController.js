@@ -6,15 +6,33 @@ listController.create = (req, res, next) => {
   if (req.body.boardId && req.body.name) {
     List.create(
       {
-        board_id: new mongoose.mongo.ObjectId(req.body.boardId),
+        boardId: new mongoose.mongo.ObjectId(req.body.boardId),
         name: req.body.name
       },
       (error, result) => {
-        res.json(result);
+        if (error) {
+          console.log({ error });
+          res.status(500).send(error);
+          return;
+        }
+
+        res.json({ list: result.serialize() });
       }
     );
   } else {
     throw new Error("Board Id and Board name is required to create a list");
+  }
+};
+
+listController.move = async (req, res) => {
+  const { listId, sortOrder } = req.body;
+  console.log({ listId, sortOrder });
+  if (listId && sortOrder) {
+    const list = await List.findById(listId).exec();
+    await list.move(sortOrder);
+    res.json({ list: list.serialize() });
+  } else {
+    res.status(422);
   }
 };
 

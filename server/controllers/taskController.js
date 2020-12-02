@@ -5,14 +5,15 @@ const mongoose = require("mongoose");
 taskController.create = (req, res, next) => {
   Task.create(
     {
-      list_id: new mongoose.Types.ObjectId(req.body.list_id),
+      listId: new mongoose.Types.ObjectId(req.body.listId),
       name: req.body.name,
-      description: req.body.desc
+      description: req.body.description,
+      dueDate: req.body.dueDate
     },
     (error, result) => {
       if (error) throw error;
       else {
-        res.json(result);
+        res.json({ task: result.serialize() });
       }
     }
   );

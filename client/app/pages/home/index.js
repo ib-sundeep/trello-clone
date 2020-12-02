@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Button, Header, Loading } from "../../components/general";
-import { loadAllBoards } from "../../stores/home";
+import { Button, Header, Icon, Loading } from "../../components/general";
+import { loadAllBoards, setCreateBoardModal } from "../../stores/home";
+import BoardItem from "./BoardItem";
+import CreateBoardModal from "./CreateBoardModal";
 
 function HomePage() {
   const dispatch = useDispatch();
@@ -21,20 +23,38 @@ function HomePage() {
       return (
         <div className="error">
           <div className="error-message">Oopsie! Something went wrong</div>
-          <Button type="primary" onClick={() => dispatch(loadAllBoards())}>
+          <Button variant="primary" onClick={() => dispatch(loadAllBoards())}>
             Try again
           </Button>
         </div>
       );
     } else {
-      return <div>Loaded {boards.length} number of boards</div>;
+      return (
+        <div className="board-items">
+          {boards.map(board => (
+            <BoardItem key={board.id} board={board} />
+          ))}
+        </div>
+      );
     }
   }
 
   return (
     <>
-      <Header title="Trello" />
+      <Header
+        actions={[
+          <Button
+            className="btn-icon"
+            onClick={() => dispatch(setCreateBoardModal(true))}
+            variant="light"
+          >
+            <Icon name="add" />
+          </Button>
+        ]}
+        title="Trello"
+      />
       <div className="page">{ui()}</div>
+      <CreateBoardModal />
     </>
   );
 }

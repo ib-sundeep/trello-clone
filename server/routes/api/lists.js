@@ -4,4 +4,6 @@ const listController = require("../../controllers/listController");
 
 router.post("/", listController.create);
 
+router.put("/move", listController.move);
+
 module.exports = router;

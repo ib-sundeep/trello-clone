@@ -1,0 +1,30 @@
+$board-item-background: #e2e2e2;
+
+.board-items {
+  @include flex-row;
+
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  overflow: auto;
+  height: 100%;
+  padding: 5px;
+}
+
+.board-item {
+  display: block;
+  margin: 5px;
+  padding: 10px;
+  width: calc(20% - 10px);
+  background-color: $board-item-background;
+  border-radius: 4px;
+  color: #515151;
+  font-size: 18px;
+  text-decoration: none !important;
+  border: 2px solid $board-item-background;
+
+  &:hover {
+    border-color: #0268f7;
+  }
+}

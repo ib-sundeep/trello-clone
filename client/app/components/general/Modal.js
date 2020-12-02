@@ -1,6 +1,9 @@
 import React from "react";
 
-function Modal({ isOpen, title, children }) {
+import Button from "./Button";
+import Icon from "./Icon";
+
+function Modal({ isOpen, title, children, onClose }) {
   if (isOpen) {
     return (
       <>
@@ -9,13 +12,21 @@ function Modal({ isOpen, title, children }) {
           <div className="modal-header">
             <div className="modal-title">{title}</div>
             <div className="modal-action">
-              <Button className="btn-dark"></Button>
+              <Button
+                className="btn-icon small"
+                onClick={onClose}
+                variant="dark"
+              >
+                <Icon name="close" />
+              </Button>
             </div>
           </div>
-          <div className="modal-body"></div>
+          <div className="modal-body">{children}</div>
         </div>
       </>
     );
+  } else {
+    return null;
   }
 }
 

@@ -5,11 +5,11 @@ import cn from "classnames";
 function Button({
   className,
   component = "button",
-  type = "default",
+  variant = "default",
   ...remainingProps
 }) {
   return React.createElement(component, {
-    className: cn("btn", `btn-${type}`, className),
+    className: cn("btn", `btn-${variant}`, className),
     ...remainingProps
   });
 }

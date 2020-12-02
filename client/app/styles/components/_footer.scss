@@ -1,0 +1,14 @@
+$footer-background: #f2f2f2;
+
+.footer {
+  @include flex-row;
+  @include flex-c;
+
+  padding: 5px;
+  background-color: $footer-background;
+
+  .footer-body {
+    font-size: 12px;
+    text-align: center;
+  }
+}

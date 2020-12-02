@@ -18,6 +18,7 @@ $header-background: #363636;
 
 .header-actions {
   @include flex-row;
+  padding: 5px;
 }
 
 .header-action {

@@ -2,11 +2,13 @@ $btn-default-background: #363636;
 $btn-primary-background: #1c48c3;
 $btn-dark-color: #000000;
 $btn-light-color: #ffffff;
-$btn-icon-size: 30px;
-$btn-icon-size-small: 24px;
-$btn-icon-size-large: 40px;
+$btn-icon-size: 48px;
+$btn-icon-size-small: 36px;
+$btn-icon-size-large: 60px;
 
 .btn {
+  @include flex-c;
+
   display: inline-flex;
   padding: 8px 15px;
   box-shadow: none;
@@ -14,6 +16,12 @@ $btn-icon-size-large: 40px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+
+  &[disabled] {
+    pointer-events: none;
+    opacity: 0.8;
+    filter: grayscale(0.6);
+  }
 }
 
 .btn-default {
@@ -36,32 +44,35 @@ $btn-icon-size-large: 40px;
 
 .btn-light {
   background-color: transparent;
-  color: $btn-dark-color;
+  color: $btn-light-color;
 
   &:hover {
-    background-color: rgba(1, 1, 1, 0.3);
+    background-color: rgba(1, 1, 1, 0.2);
   }
 }
 
 .btn-dark {
   background-color: transparent;
-  color: $btn-light-color;
+  color: $btn-dark-color;
 
   &:hover {
-    background-color: rgba(1, 1, 1, 0.3);
+    background-color: rgba(1, 1, 1, 0.2);
   }
 }
 
 .btn-icon {
+  font-size: 24px;
   width: $btn-icon-size;
   height: $btn-icon-size;
 
   &.small {
+    font-size: 16px;
     width: $btn-icon-size-small;
     height: $btn-icon-size-small;
   }
 
   &.large {
+    font-size: 32px;
     width: $btn-icon-size-large;
     height: $btn-icon-size-large;
   }

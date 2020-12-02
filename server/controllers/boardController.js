@@ -42,7 +42,7 @@ boardController.create = (req, res, next) => {
   }
 };
 
-boardController.find = (req, res, next) => {
+boardController.list = (req, res, next) => {
   Board.find().exec((error, boards) => {
     if (error) {
       res.status(500).send({ error: "Something went wrong! Try again later" });
@@ -52,6 +52,33 @@ boardController.find = (req, res, next) => {
       });
     }
   });
+};
+
+boardController.find = async (req, res) => {
+  const { slug } = req.params;
+  const board = await Board.findOne({ slug }).exec();
+  try {
+    if (board) {
+      const lists = await board.lists();
+      const tasks = await board.tasks();
+      res.json({
+        board: board.serialize(),
+        lists: lists.reduce((o, v) => {
+          o[v._id.toString()] = v.serialize();
+          return o;
+        }, {}),
+        tasks: tasks.reduce((o, v) => {
+          o[v._id.toString()] = v.serialize();
+          return o;
+        }, {})
+      });
+    } else {
+      res.status(404).send({ error: "No such board exists!" });
+    }
+  } catch (error) {
+    console.log({ error });
+    res.status(500).send({ error: "Internal server error" });
+  }
 };
 
 module.exports = boardController;
