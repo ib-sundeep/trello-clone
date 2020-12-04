@@ -20,7 +20,7 @@ listController.create = (req, res, next) => {
       }
     );
   } else {
-    throw new Error("Board Id and Board name is required to create a list");
+    res.status(422).send({ error: "Board name is not valis" });
   }
 };
 

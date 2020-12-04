@@ -1,0 +1,54 @@
+.board {
+  height: 100%;
+  overflow-x: auto;
+  padding: 5px;
+}
+
+.list-items {
+  @include flex-row;
+
+  align-items: flex-start;
+}
+
+.list-item {
+  margin: 5px;
+  background-color: #f2f2f2;
+  border-radius: 4px;
+  border: 1px solid #e2e2e2;
+  width: 300px;
+  flex: 0 0 auto;
+}
+
+.list-item-header {
+  @include flex-row;
+
+  align-items: center;
+  padding: 10px;
+}
+
+.list-item-title {
+  flex: 1 0 0;
+  margin-right: 10px;
+}
+
+.list-item-tasks {
+  padding: 5px;
+}
+
+.task-item {
+  margin: 5px;
+  padding: 10px;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+.list-new-btn-wrapper {
+  flex: 0 0 auto;
+  padding: 5px;
+  padding-right: 10px;
+}
+
+.list-new-btn {
+  width: 300px;
+}

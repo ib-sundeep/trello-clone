@@ -20,14 +20,7 @@ function HomePage() {
     if (isLoading) {
       return <Loading />;
     } else if (loadError) {
-      return (
-        <div className="error">
-          <div className="error-message">Oopsie! Something went wrong</div>
-          <Button variant="primary" onClick={() => dispatch(loadAllBoards())}>
-            Try again
-          </Button>
-        </div>
-      );
+      return <Error actionFn={() => dispatch(loadAllBoards())} />;
     } else {
       return (
         <div className="board-items">

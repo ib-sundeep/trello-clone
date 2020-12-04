@@ -7,3 +7,7 @@ export function getList() {
 export function create(data) {
   return makeRequest("POST", "/boards", data);
 }
+
+export function get(slug) {
+  return makeRequest("GET", `/boards/${slug}`);
+}

@@ -1,4 +1,5 @@
 .form {
+  textarea,
   input {
     padding: 10px;
     border: 1px solid #e2e2e2;
@@ -11,6 +12,10 @@
 
   button[type="submit"] {
     width: 100%;
+  }
+
+  textarea {
+    resize: none;
   }
 }
 
